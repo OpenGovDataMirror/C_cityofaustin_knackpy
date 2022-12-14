@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta name="generator" content="Hugo 0.97.0" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Knackpy API Reference #  To understand knackpy&rsquo;s design, it&rsquo;s helpful to think of it in terms of two entry points:
+ Api: Contains core functions for over-the-wire interactions with the Knack API, as well as helpers for pagination and re-trying on request failures. App: The highest-level container for getting and interacting with Knack records.  The other the knackpy classes act as a hierarchy that are constructed through a chain of side-effects originating from App objects.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cityofaustin.github.io/knackpy/docs/api-reference/" />
+
+<title>API Reference | Knackpy</title>
+<link rel="manifest" href="/knackpy/manifest.json">
+<link rel="icon" href="/knackpy/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/knackpy/book.min.bf064a71a8e587ec4bfe3f4ec7da33e2110269e1cd15b03e0a984aa16eeec2ab.css" integrity="sha256-vwZKcajlh&#43;xL/j9Ox9oz4hECaeHNFbA&#43;CphKoW7uwqs=">
+<script defer src="/knackpy/en.search.min.f02c68b749284000fba8fe6404e0e70d71cd1c4c084baaf281891dd8ccbcdcc2.js" integrity="sha256-8Cxot0koQAD7qP5kBODnDXHNHEwIS6rygYkd2My83MI="></script>
+<link rel="alternate" type="application/rss+xml" href="https://cityofaustin.github.io/knackpy/docs/api-reference/index.xml" title="Knackpy" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/knackpy"><span>Knackpy</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cityofaustin.github.io/knackpy/docs/api-reference/" class=" active">API Reference</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cityofaustin.github.io/knackpy/docs/api-reference/api/" class="">API</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cityofaustin.github.io/knackpy/docs/api-reference/app/" class="">App</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cityofaustin.github.io/knackpy/docs/api-reference/fields/" class="">Fields</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cityofaustin.github.io/knackpy/docs/api-reference/record/" class="">Record</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cityofaustin.github.io/knackpy/docs/developer-guide/" class="">Developer Guide</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cityofaustin.github.io/knackpy/docs/user-guide/" class="">User Guide</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var e=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/knackpy/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>API Reference</strong>
+
+  <label for="toc-control">
+    
+    <img src="/knackpy/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#title-api-reference">menu: main
+title: API Reference</a></li>
+  </ul>
+</nav>
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="knackpy-api-reference">
+  Knackpy API Reference
+  <a class="anchor" href="#knackpy-api-reference">#</a>
+</h1>
+<p>To understand knackpy&rsquo;s design, it&rsquo;s helpful to think of it in terms of two entry points:</p>
+<ul>
+<li><a href="./api"><code>Api</code></a>: Contains core functions for over-the-wire interactions with the Knack API, as well as helpers for pagination and re-trying on request failures.</li>
+<li><a href="./app"><code>App</code></a>: The highest-level container for getting and interacting with Knack records.</li>
+</ul>
+<p>The other the knackpy classes act as a hierarchy that are constructed through a chain of side-effects originating from  <code>App</code> objects.</p>
+<ul>
+<li><a href="./record"><code>Record</code></a>: A <a href="https://docs.python.org/3/library/collections.abc.html">dict-like</a> container for <code>Field</code> objects which supplies helpers for accesing and formatting fields.</li>
+<li><a href="./fields#field-objects"><code>Field</code></a>: A container for a single Knack key/value, with helpers for formatting.</li>
+<li><a href="./fields#fielddef-objects"><code>FieldDef</code></a>: Stores field metadata (type, formatting method, parent objects/views)</li>
+</ul>
+<hr>
+<h2 id="title-api-reference">
+  menu: main
+title: API Reference
+  <a class="anchor" href="#title-api-reference">#</a>
+</h2>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#title-api-reference">menu: main
+title: API Reference</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
